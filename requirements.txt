@@ -1,2 +1,2 @@
-environs==9.4.0
-web3==5.23.0
+environs==9.5.0
+web3==6.5.0

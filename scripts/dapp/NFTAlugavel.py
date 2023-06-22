@@ -43,7 +43,7 @@ class NFTAlugavel:
             # Cria a transação
             tx = self.contract.functions.criarNovoToken(
                 tokenCID
-            ).buildTransaction({
+            ).build_transaction({
                 "nonce": nonce,
                 "from": self.public_key
             })
@@ -53,7 +53,7 @@ class NFTAlugavel:
             tx_hash = self.web3.eth.send_raw_transaction(signed_tx.rawTransaction)
             # Aguarda o término da transação para resgatar o ID do Token
             receipt = self.web3.eth.wait_for_transaction_receipt(tx_hash)
-            token_id = Web3.toInt(receipt['logs'][0]['topics'][3])
+            token_id = Web3.to_int(receipt['logs'][0]['topics'][3])
             print("NFT criado com sucesso!")
             return token_id
         except Exception as e:

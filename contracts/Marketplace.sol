@@ -2,9 +2,9 @@
 pragma solidity ^0.8.3;
 
 // Padrão ERC721
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contracts/token/ERC721/ERC721.sol";
 // Contador para os IDs dos itens alugáveis
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/utils/Counters.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contracts/utils/Counters.sol";
 
 
 contract Marketplace{
@@ -38,7 +38,6 @@ contract Marketplace{
         address locatario; // Endereço da pessoa que está alugando o item
         uint256 preco; // Preço do aluguel
         uint256 expiraEm; // Tempo de duração do aluguel
-        bytes32 descricao; // Descrição adicional do item
     }
 
     // Lista dos itens alugáveis do marketplace
@@ -53,8 +52,7 @@ contract Marketplace{
         address vendedor,
         address locatario,
         uint256 preco,
-        uint256 expiraEm,
-        bytes32 descricao
+        uint256 expiraEm
     );
 
     // Construtor que inicializa o dono do contrato
@@ -77,7 +75,7 @@ contract Marketplace{
     // Função que cria um novo item para ser alugado
     function criaItemAlugavel(
         address contratoNFT, uint256 tokenId,
-        uint256 preco, uint256 expiraEm, bytes32 descricao) public payable{
+        uint256 preco, uint256 expiraEm) public payable{
         
         require(preco > 0, "Preco deve ser ao menos de 1 wei!");
         require(msg.value == taxaMarketplace, "Pague exatamente a taxa que o Marketplace exige!");
@@ -93,8 +91,7 @@ contract Marketplace{
             payable(msg.sender),
             address(0),
             preco,
-            expiraEm,
-            descricao
+            expiraEm
         );
 
         IERC721(contratoNFT).transferFrom(msg.sender, address(this), tokenId);
@@ -108,8 +105,7 @@ contract Marketplace{
             msg.sender,
             address(0),
             preco,
-            expiraEm,
-            descricao
+            expiraEm
         );
     }
 

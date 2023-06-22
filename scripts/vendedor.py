@@ -20,11 +20,10 @@ if nft != None and marketplace != None:
         token_id = int(input("Digite o ID do NFT: "))
         preco = float(input("Digite o preço de aluguel do NFT (Em Ether): "))
         tempo = int(input("Digite o tempo do aluguel (Em segundos): "))
-        descricao = input("Digite uma descrição adicional do NFT: ")
         taxa = marketplace.getTaxaMarketplace()
         print("Taxa cobrada pelo marketplace: {} ETH".format(taxa))
         print("=======================================================")
-        item_criado = marketplace.criaItemAlugavel(token_id, preco, tempo, descricao, taxa)
+        item_criado = marketplace.criaItemAlugavel(token_id, preco, tempo, taxa)
         if item_criado is not None:
             print("=======================================================")
             print("ID do item alugável: {}".format(item_criado['itemId']))
@@ -33,7 +32,6 @@ if nft != None and marketplace != None:
             print("Vendedor: {}".format(item_criado['vendedor']))
             print("Valor do aluguel: {} ETH".format(item_criado['preco']))
             print("Prazo do aluguel em segundos: {}".format(item_criado['expiraEm']))
-            print("Descrição adicional: {}".format(item_criado['descricao']))
             print("=======================================================")
     elif opcao == 3:
         print("=======================================================")
@@ -49,7 +47,6 @@ if nft != None and marketplace != None:
                 print("Locatário: {}".format(nft['locatario']))
                 print("Valor do aluguel: {} ETH".format(nft['preco']))
                 print("Prazo do aluguel em segundos: {}".format(nft['expiraEm']))
-                print("Descrição adicional: {}".format(nft['descricao']))
                 print("=======================================================")
         else:
             print("Nenhum NFT pertencente a esta conta!")

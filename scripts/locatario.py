@@ -22,7 +22,6 @@ if marketplace != None:
                 print("Locatário: {}".format(nft['locatario']))
                 print("Valor do aluguel: {} ETH".format(nft['preco']))
                 print("Prazo do aluguel em segundos: {}".format(nft['expiraEm']))
-                print("Descrição adicional: {}".format(nft['descricao']))
                 print("=======================================================")
         else:
             print("Nenhum NFT disponível!")
@@ -49,7 +48,6 @@ if marketplace != None:
                 print("Locatário: {}".format(nft['locatario']))
                 print("Valor do aluguel: {} ETH".format(nft['preco']))
                 print("Prazo do aluguel: {}".format(datetime.fromtimestamp(nft['expiraEm'])))
-                print("Descrição adicional: {}".format(nft['descricao']))
                 print("=======================================================")
         else:
             print("Nenhum NFT alugado por esta conta!")

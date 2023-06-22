@@ -57,7 +57,7 @@ class Connection:
         '''
         try:
             self.web3 = Web3(Web3.HTTPProvider(self.provider))
-            return self.web3.isConnected()
+            return self.web3.is_connected()
         except Exception as e:
             print(e)
             return False

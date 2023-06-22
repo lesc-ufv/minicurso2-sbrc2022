@@ -2,10 +2,10 @@
 pragma solidity ^0.8.3;
 
 // Padrões ERC721
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contracts/token/ERC721/ERC721.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // Contador para os IDs dos Tokens
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/utils/Counters.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.9/contracts/utils/Counters.sol";
 
 
 contract NFT is ERC721URIStorage {
@@ -36,7 +36,7 @@ contract NFT is ERC721URIStorage {
         _tokenIds.increment();
         uint256 novoId = _tokenIds.current();
 
-        _mint(msg.sender, newItemId);
+        _mint(msg.sender, novoId);
         _setTokenURI(novoId, tokenURI);
         approve(marketplace, novoId);
 
