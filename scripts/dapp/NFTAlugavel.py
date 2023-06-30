@@ -44,6 +44,7 @@ class NFTAlugavel:
             tx = self.contract.functions.criarNovoToken(
                 tokenCID
             ).build_transaction({
+                "gasPrice": self.web3.eth.gas_price,
                 "nonce": nonce,
                 "from": self.public_key
             })

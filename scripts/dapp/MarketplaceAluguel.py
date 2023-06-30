@@ -132,6 +132,7 @@ class MarketplaceAluguel:
             tx = self.contract.functions.finalizaAluguel(
                 itemId
             ).build_transaction({
+                "gasPrice": self.web3.eth.gas_price,
                 "nonce": nonce,
                 "from": self.public_key
             })
